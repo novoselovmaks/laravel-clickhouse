@@ -68,6 +68,16 @@ class Builder extends BaseBuilder
         return (int) ($result[0]['count'] ?? 0);
     }
 
+    public  function getCountForPagination(){
+        return $this->count();
+    }
+
+    public function forPage($page, $perPage = 15)
+    {
+        $this->offset(($page - 1) * $perPage)->limit($perPage);
+        return $this;
+    }
+
     /**
      * Perform query and get first row.
      *
@@ -78,6 +88,12 @@ class Builder extends BaseBuilder
     public function first()
     {
         return $this->get()->first();
+    }
+
+    public function offset($value)
+    {
+        $this->offset = $value;
+        return $this;
     }
 
     /**
