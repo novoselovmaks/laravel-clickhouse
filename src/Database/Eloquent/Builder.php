@@ -478,6 +478,19 @@ class Builder
         return true;
     }
 
+
+    /**
+     * Add a generic "order by" clause if the query doesn't already have one.
+     *
+     * @return void
+     */
+    protected function enforceOrderBy()
+    {
+        if (empty($this->query->orders) && empty($this->query->unionOrders)) {
+            $this->orderBy($this->model->getQualifiedKeyName(), 'asc');
+        }
+    }
+    
     /**
      * Get an array with the values of a given column.
      *
