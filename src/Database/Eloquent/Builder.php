@@ -484,8 +484,7 @@ class Builder
      */
     public function forPage($page, $perPage = 15)
     {
-        dump(__METHOD__);
-        return $this->offset(($page - 1) * $perPage)->limit($perPage);
+        return $this->limit($perPage, ($page - 1) * $perPage);
     }
 
     
