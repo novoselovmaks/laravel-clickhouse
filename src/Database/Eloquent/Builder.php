@@ -443,10 +443,7 @@ class Builder
      */
     public function chunk($count, callable $callback)
     {
-        dump('кол-во до ' . $this->count());
         $this->enforceOrderBy();
-        dump('кол-во после ' . $this->count());
-
 
         $page = 1;
 
@@ -477,7 +474,20 @@ class Builder
         return true;
     }
 
-    
+
+    /**
+     * Set the limit and offset for a given page.
+     *
+     * @param  int  $page
+     * @param  int  $perPage
+     * @return $this
+     */
+    public function forPage($page, $perPage = 15)
+    {
+        dump(__METHOD__);
+        return $this->offset(($page - 1) * $perPage)->limit($perPage);
+    }
+
     
     /**
      * Chunk the results of a query by comparing numeric IDs.
