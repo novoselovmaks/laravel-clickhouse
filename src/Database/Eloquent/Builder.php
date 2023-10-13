@@ -541,6 +541,8 @@ class Builder
      */
     protected function enforceOrderBy()
     {
+        dump($this->query->orders);
+        dump(empty($this->query->orders));
         if (empty($this->query->orders) /*&& empty($this->query->unionOrders)*/) {
             $this->orderBy($this->model->getQualifiedKeyName(), 'asc');
         }
