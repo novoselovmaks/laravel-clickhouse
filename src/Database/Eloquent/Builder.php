@@ -541,7 +541,7 @@ class Builder
      */
     protected function enforceOrderBy()
     {
-        dump($this->query->orders);
+        dump($this->query);
         dump($this->query->unionOrders);
         dd();
         if (empty($this->query->orders) && empty($this->query->unionOrders)) {
